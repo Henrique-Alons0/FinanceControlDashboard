@@ -1,0 +1,162 @@
+body {
+    background-color: #07060E;
+}
+
+#display {
+    display: flex;
+}
+
+#sideBar {
+    background-color: #141A2A;
+    /* border-right: 1px rgb(68, 69, 80) solid; */
+    height: 100vh;
+    width: 25vw;
+}
+
+#panel {
+    height: 100vh;
+    width: 100vw;
+}
+
+#navbarControl {
+    background-color: #141A2A;
+    border-bottom: 1px rgb(68, 69, 80) solid;
+    height: 5vw;
+    width: auto;
+}
+
+#data {
+    padding: 4rem;
+    color: white;
+}
+
+/* SIDEBAR */
+
+#logo {
+    height: 11vh;
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    color: white;
+}
+
+#logoImg {
+    width: 2rem;
+    height: 2rem;
+}
+
+#companyName {
+
+}
+
+#menu {
+    font-size: 1.5rem;
+}
+
+#menuList {
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    text-align: justify;
+    color: whitesmoke;
+}
+
+.menuItem:link,
+.menuItem:focus,
+.menuItem:visited,
+.menuItem:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menuItem:hover {
+    color: #bfbfbf;
+    text-shadow: #bfbfbf 1px;
+}
+
+.menuIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: white;
+    color: white;
+}
+
+/* .selectedMenuItem {
+    background-color: #07060E;
+    border: 1px rgb(68, 69, 80) solid;
+    border-right: 4px #07060E solid;
+    border-radius: 25px 0 0 25px;
+} */
+
+.desativatedLink{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+#navbarControl {
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* gap: 2rem; */
+}
+
+#leftSide {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: whitesmoke;
+}
+
+#rightSide {
+    color: whitesmoke;
+}
+
+#userInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#hamburguerIconMenu {
+    width: 2rem;
+    height: 2rem;
+}
+
+#imageFromUser {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 25px;
+    border: 1px whitesmoke solid;
+}
+
+#nameOfTheSelectedPage {
+    font-size: 1.7rem;
+}
+
+.content{
+    height: max-content;
+    padding: 1rem;
+    background-color: #141A2A;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #141A2A;
+}
