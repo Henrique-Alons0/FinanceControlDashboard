@@ -1,5 +1,6 @@
 body {
     background-color: #07060E;
+    overflow: hidden;
 }
 
 #display {
@@ -16,6 +17,7 @@ body {
 #panel {
     height: 100vh;
     width: 100vw;
+    overflow-y: auto;
 }
 
 #navbarControl {
@@ -144,8 +146,9 @@ body {
 
 .content{
     height: max-content;
-    padding: 1rem;
-    background-color: #141A2A;
+    width: 100%;
+    padding: 0.5rem;
+    /* background-color: #141A2A; */
 }
 
 table {
@@ -159,4 +162,92 @@ th, td {
 }
 th {
     background-color: #141A2A;
+}
+
+#dashboardContent {
+    /* width: 80%!important; */
+}
+
+#firstRowReports{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.cardIndicator{
+    padding: 0.5rem;
+    width: 23.75%;
+    background-color: #141A2A;
+    border: 1px solid #343434;
+    border-radius: 25px;
+}
+
+.cardTitle {
+    text-align: center;
+}
+
+#firstRowReports .cardIndicator {
+    flex-grow: 1; /* Permite que os elementos cresçam para preencher o espaço disponível */
+    flex-shrink: 1; /* Permite que os elementos encolham se não houver espaço suficiente */
+    width: calc(25% - 1rem); /* Define a largura de cada item com uma margem de 1rem entre eles */
+}
+
+#secondRowReports {
+    position: static;
+    gap: 1rem;
+    display: flex;
+    padding: 1rem;
+}
+
+.chartIndicator{
+    margin-top: 1rem;;
+    width: 50%;
+    background-color: #141A2A;
+    border: 1px solid #343434;
+    border-radius: 25px;
+}
+
+#secondRowReports .chartIndicator {
+    flex-grow: 1; /* Permite que os elementos cresçam para preencher o espaço disponível */
+    flex-shrink: 1; /* Permite que os elementos encolham se não houver espaço suficiente */
+    width: calc(50% - 1rem); /* Define a largura de cada item com uma margem de 1rem entre eles */
+}
+
+.indicatorInformations{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    font-size: 1rem;
+}
+
+#indicatorInformationsToDue{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    font-size: 1rem;
+}
+
+.numbersIndicators{
+    font-size: 2.1rem;
+}
+
+.numbersIndicatorsSelected{
+    font-size: 2.1rem;
+    color: #6FADCF;
+}
+
+
+
+#totalIssued,
+#totalDue,
+#totalReceivable,
+#totalPaid {
+    flex-grow: 1; /* Permite que os elementos cresçam para preencher o espaço disponível */
+    flex-shrink: 1; /* Permite que os elementos encolham se não houver espaço suficiente */
+    width: calc(100% - 1rem); /* Define a largura de cada item com uma margem de 1rem entre eles */
 }

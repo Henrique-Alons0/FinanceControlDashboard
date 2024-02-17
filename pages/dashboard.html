@@ -7,6 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/justgage.min.js"></script>
+    <script src="../js/gauge.min.js"></script>
     <script src="../js/auxFuncs.js"></script>
     <script src="../js/dashboard.js"></script>
 </head>
@@ -65,19 +69,95 @@
                     <h3 id="nameOfTheSelectedPage">Dashboard</h3>
                 </div>
                 <div class="rightSide" id="rightSide">
-                    <a id="userInfo" class="desativatedLink" href="">
-                        <img id="imageFromUser" src="../assets/person.svg" alt="">
-                        <section>
-                            <h5 id="userName">Henrique Alonso</h5>
-                            <h6>Super admin</h6>
-                        </section>
-                        <img id="dropdownIcon" class="dropdown-toggledropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent" src="../assets/chevronUp.svg" alt="">
+                    <a id="userInfo" class="desativatedLink" href="#">
                     </a>
                 </div>
             </div>
             <div class="data" id="data">
                 <div class="content dashboardContent" id="dashboardContent">
-                    <p>Dashboard</p>
+                    <!-- <div>
+                        <select name="" id="typeOfFilter">
+                            <option value="3">Selecione um tipo de Filtro</option>
+                            <option value="0">Mês</option>
+                            <option value="1">Trimestre</option>
+                            <option value="2">Ano</option>
+                        </select>
+                        <div id="moreFilters">
+                        </div>
+                        <script>
+                            let refs = []
+                            if($("#typeOfFilter")[0].value == 0){
+                                mockDataFromDataBase.invoices.map((invoice) => {
+                                    invoiceReference = invoice.dates.reference
+                                    if(!refs.includes(invoiceReference)) {
+                                        refs.push(`${convertMonths(invoiceReference.split("_")[0])}/${invoiceReference.split("_")[1]}`);
+                                        $("#moreFilters").append(`<select name="" id="monthSelection">
+                                            <option value="0">Selecione um mês de referência</option>
+                                            <option value="0">Mês</option>
+                                            <option value="1">Trimestre</option>
+                                            <option value="2">Ano</option>
+                                        </select>`)
+                                    } 
+                                })
+                                $('#moreFilters').append("")
+                            }
+                        </script>
+                    </div> -->
+                    <div class="firstRowReports" id="firstRowReports">
+                        <div class="cardIndicator">
+                            <h3 class="cardTitle">Notas emitidas</h3>
+                            <canvas id="totalIssued"></canvas>
+                            <div class="indicatorInformations">
+                                <strong class="numbersIndicators" id="totalIssuedStart">0</strong>
+                                <strong class="numbersIndicatorsSelected" id="totalIssuedSelected">0</strong>
+                                <strong class="numbersIndicators" id="totalIssuedStop">0</strong>
+                            </div>
+                        </div>
+                        <div class="cardIndicator">
+                            <h3 class="cardTitle">Notas Vencidas</h3>
+                            <canvas id="totalDue"></canvas>
+                            <div class="indicatorInformations">
+                                <strong class="numbersIndicators" id="totalDueStart">0</strong>
+                                <strong class="numbersIndicatorsSelected" id="totalDueSelected">0</strong>
+                                <strong class="numbersIndicators" id="totalDueStop">0</strong>
+                            </div>
+                        </div>
+                        <div class="cardIndicator">
+                            <h3 class="cardTitle">Notas a receber</h3>
+                            <canvas id="totalReceivable"></canvas>
+                            <div class="indicatorInformations">
+                                <strong class="numbersIndicators" id="totalReceivableStart">0</strong>
+                                <strong class="numbersIndicatorsSelected" id="totalReceivableSelected">0</strong>
+                                <strong class="numbersIndicators" id="totalReceivableStop">0</strong>
+                            </div>
+                        </div>
+                        <div class="cardIndicator">
+                            <h3 class="cardTitle">Notas pagas</h3>
+                            <canvas id="totalPaid" style="width: 100%; max-width: fit-content;"></canvas>
+                            <div class="indicatorInformations">
+                                <strong class="numbersIndicators" id="totalPaidStart">0</strong>
+                                <strong class="numbersIndicatorsSelected" id="totalPaidSelected">0</strong>
+                                <strong class="numbersIndicators" id="totalPaidStop">0</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="secondRowReports" id="secondRowReports">
+                        <div class="chartIndicator">
+                            <h3 class="cardTitle">Receita vs Inadimplência</h3>
+                            <canvas id="receitaChart" width="400" height="200"></canvas>
+                            <div class="chartIndicatorInformations"></div>
+                        </div>
+                        <div class="chartIndicator">
+                            <h3 class="cardTitle">Notas a Vencer</h3>
+                            <div class="chartIndicatorInformations">
+                                <canvas id="totalToDue" width="400" height="200"></canvas>
+                                <div id="indicatorInformationsToDue">
+                                    <strong class="numbersIndicators" id="totalToDueStart">0</strong>
+                                    <strong class="numbersIndicatorsSelected" id="totalToDueSelected">0</strong>
+                                    <strong class="numbersIndicators" id="totalToDueStop">0</strong>
+                                </div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="content invoicesContent" id="invoicesContent">
                     <table>
